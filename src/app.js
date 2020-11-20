@@ -7,8 +7,8 @@ const bodyParser = require('body-parser');
 // const frontEndJs = require('../public/js/app');
 
 
-const geoCode = require('./util/geocode');
-const foreCast = require('./util/foreCast');
+const geoCode = require('./utils/geocode');
+const foreCast = require('./utils/forecast');
 
 const app = express();
 const port = process.env.PORT || 3000;
