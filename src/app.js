@@ -10,7 +10,8 @@ const bodyParser = require('body-parser');
 const geoCode = require('./util/geocode');
 const foreCast = require('./util/foreCast');
 
-const app = express()
+const app = express();
+const port = process.env.PORT || 3000;
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public')
