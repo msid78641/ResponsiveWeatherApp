@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css"/>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="<%= weatherIcon %>">
+    <title> <%=place%>  </title>
+  </head>
+  <body>
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="d-none d-md-block col-md-7 col-lg-8 imageData ">
+              <div class="dataOnImage">
+                <div class="row text-center">
+                  <div class="col-4">
+                    <div class="display-3 temperature"><%if(temperature) { %> <%= temperature %>&#176 <%}%></div>
+                  </div>
+                  <div class="col-4">
+                    <div class="place">
+                      <div class="h3"><%if(place) { %> <%= place%> <%}%></div>
+                      <%if(obsTime) { %> <small>Observation Time <%= obsTime %></small> <%}%>
+                  </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="weather">
+                      <div class="h5"><%if(weatherDesc) { %> <%= weatherDesc %> <%}%></div>
+                      <% if(isDefined){%> <small><%=date.day%>/<%=date.month%>/<%=date.year%></small><%}%>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-5 col-lg-4 textData">
+          
+              <div class="container-fluid mx-0 px-0">
+                <form action="/postWeatherData" method = "POST">
+                  <div class="form-inline">
+                      <input type="text" class="mr-0 pr-0 col-9" id="location" name="location" placeholder="Enter Location" autocomplete="off">
+                      <button type="submit" class="btn mx-0 col-3"><i class="fas fa-search"></i></button>
+                  </div>
+                  <div class="autoComplete hide">
+                    <div class="dropdownRes w-100">
+                      <!-- <ul class="text-start">
+                        <li>Hello</li>
+                        <li>Hello</li>
+                        <li>Hello</li>
+                        <li>Hello</li>
+                        <li>Hello</li> 
+                      </ul> -->
+                    </div>
+                    
+                  </div>
+                </form>
+                <div class="weatherDetails d-none d-md-block w-100 text-center mx-auto"> 
+                  <% if(isDefined) { %>
+                    <P class="w-100 text-center">Weather Details</P>
+                        <div class="data w-100 h-100 p-3 pl-5">
+                            <div class="windSpeed w-100">
+                                <small class = "smallText"> <%if(windSpeed) { %>Wind speed </small> <small class = "smallvalue"><%= windSpeed%>  <%}%></small>
+                            </div>
+                            <div class="windDirection ">
+                                <small class = "smallText"><%if(windDir) { %>Wind Direction</small><small class = "smallvalue"><%= windDir%> <%}%></small>
+                            </div>
+                            <div class="pressure ">
+                                <small class = "smallText"><%if(pressure) { %>Pressure</small> <small class = "smallvalue"><%=pressure%> <%}%></small>
+                            </div>
+                            <div class="humidty">
+                                <small class = "smallText"><%if(humidity) { %>Humidty</small> <small class = "smallvalue"><%=humidity%> <%}%></small>
+                            </div>
+                            <div class="cloudCover">
+                                <small class = "smallText"><%if(cloudCover) { %>Cloud Cover</small> <small class = "smallvalue"><%=cloudCover%> <%}%></small>
+                            </div>
+                        </div>
+                  <% } else if(info) { %>
+                      <P><%= info %></P>
+                  <% }%>
+                </div>
+                
+                <div class="d-block d-md-none text-center mobileView">
+                  <div class="mobileViewData">
+                    <% if(isDefined) { %>
+                    <div class="h4 mt-3">Weather Details</div>
+                    <div class="display-2 mt-2"><%if(temperature) { %><%= temperature %>&#176<%}%></div>
+                    <div class="row mt-5 w-100">
+                      <div class="col-6 px-0">
+                        <div class="h4 additionalInfo" style="margin-bottom: 3px;"><%if(place) { %><%= place%><%}%></div>
+                        <%if(obsTime) { %> <small>Obsv Time <%= obsTime %></small> <%}%>
+                      </div>
+                      <div class="col-6 px-0 ">
+                        <div class="h4 mb-0 additionalInfo"><%if(weatherDesc) { %> <%= weatherDesc %> <%}%></div>
+                        <% if(isDefined){%> <small><%=date.day%>/<%=date.month%>/<%=date.year%></small><%}%>
+                      </div>
+                    </div>
+                    <div class="row mt-5 w-100 mx-0 px-4 h-100 pb-4">
+                      <div class="h5 col-6 my-0 mx-0 px-0 mt-4 conditions">Wind speed</div>  
+                      <div class="h5 col-6 my-0 mx-0 px-0 mt-4 conditionValues"><%= windSpeed%></div>  
+                      <div class="h5 col-6 my-0 mx-0 px-0 mt-4 conditions">Wind Direction</div>  
+                      <div class="h5 col-6 my-0 mx-0 px-0 mt-4 conditionValues"><%= windDir%></div>  
+                      <div class="h5 col-6 my-0 mx-0 px-0 mt-4 conditions">Humidity</div>  
+                      <div class="h5 col-6 my-0 mx-0 px-0 mt-4 conditionValues"><%=humidity%></div>  
+                      <div class="h5 col-6 my-0 mx-0 px-0 mt-4 conditions">Cloud cover</div>  
+                      <div class="h5 col-6 my-0 mx-0 px-0 mt-4 conditionValues"><%=cloudCover%></div>  
+                      <div class="h5 col-6 my-0 mx-0 px-0 mt-4 conditions">Pressure</div>  
+                      <div class="h5 col-6 my-0 mx-0 px-0 mt-4 conditionValues"><%=humidity%></div>  
+                    </div>
+                    <% } else if(info) { %>
+                      <P><%= info %></P>
+                    <% }%>
+                  </div>
+                  </div>
+                </div>
+              </div>
+
+              </div>
+
+            </div>
+        </div>    
+    </div>
+ 
+    
+    
+    
+    <!-- Optional JavaScript -->
+    <script src="app.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

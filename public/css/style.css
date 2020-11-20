@@ -1,0 +1,224 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background: rgb(0,27,47);
+    background: linear-gradient(0deg, rgba(0,27,47,1) 7%, rgba(0,46,69,1) 31%, rgba(128,159,190,1) 69%, rgba(150,177,197,1) 95%);
+}
+
+.container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.row {
+    height: 100%;
+}
+
+.imageData,.textData {
+    margin: 0;
+    padding: 0;
+}
+
+.imageData{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center center;
+    background-image: url(https://images.unsplash.com/photo-1444927714506-8492d94b4e3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1055&q=80);
+}
+
+
+.dataOnImage .row {
+    color: rgb(173, 166, 166);
+    position: absolute;
+    
+    left: 0;
+    right: 0;
+}
+
+.dataOnImage .row .col-4 {
+    padding: 0;
+}
+
+
+.temperature {
+    position: relative;
+    top: 68%;
+}
+.place {
+    position: relative;
+    top: 70%;
+}
+
+.weather {
+    position: relative;
+    top: 70%;
+}
+
+/* .place,.temperature, .weather{
+    position: absolute;
+    top: 0%;
+} */
+
+.container-fluid {
+    height: 100%;
+}
+
+.textData .container-fluid {
+    background: rgb(0,27,47);
+    background: linear-gradient(180deg, rgba(0,27,47,1) 32%, rgba(0,46,69,1) 49%, rgba(7,52,75,1) 55%, rgba(128,159,190,1) 100%, rgba(3,48,71,1) 100%, rgba(150,177,197,1) 100%);
+    background-repeat: no-repeat;
+}
+
+.active{
+    display: block;
+}
+
+
+.hide {
+    display: none;
+}
+
+button,input{
+    color: #c0cfda !important;
+    height: 50px !important;
+    background: transparent !important;
+    border-right: 0 !important;
+    border-bottom: 2px solid rgb(99, 97, 97) !important;
+}
+
+.autoComplete {
+    background-color: #456b86;
+    color: #c0cfda !important;
+}
+
+.autoComplete ul li:hover {
+    background-color: #1f2f3b !important;
+}
+
+.liHeight {
+    height: 50px;
+    padding-left: 10px;
+}
+
+
+input:focus,
+button:focus {
+    outline: none;
+    background: transparent;
+}
+
+button:hover{
+    background-color: #1f2f3b !important;
+}
+
+
+.weatherDetails{
+    height: auto;
+    text-align: center;
+    position: absolute;
+    color: #c0cfda;
+    top: 15%; 
+    padding: 10px;
+}
+
+hr {
+    width: 75%;
+    margin: 30px auto;
+}
+
+.mobileView {
+    color: #c0cfda;
+}
+
+.weatherDetails div {
+    height: 70px;
+    text-align: start;
+    width: 100%;
+}
+
+.windspeed {
+    text-align: start;
+}
+
+.weatherDetails div:nth-child(1) {
+     margin-top: 30px;
+}
+
+.weatherDetails .data .smallText,.smallvalue {
+    display: inline-block;
+}
+
+.weatherDetails .smallText{
+    width: 60%;
+}
+
+.weatherDetails .smallvalue {
+    width: 30%;
+    text-align: center;
+}
+
+/* .conditions{
+    text-align: start;
+}
+
+.conditionValues{
+    text-align: end;
+} */
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+    .container {
+        height: 100vh;
+        width: 100%;
+    }
+    .addionalInfo {
+        font-size: 20px;
+    }
+}
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .container {
+        height: 100vh !important;
+        width: 100% !important;
+    }
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .container {
+        height: 550px;
+        width: 95%;
+    }
+    body {
+        background-repeat: no-repeat;
+        background-color: rgb(0,27,47);
+        background-color: linear-gradient(0deg, rgba(0,27,47,1) 7%, rgba(0,46,69,1) 31%, rgba(128,159,190,1) 69%, rgba(150,177,197,1) 95%);
+    }
+} 
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .container {
+        height: 550px;
+        width: 85%;
+    }
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        height: 550px;
+        width: 75%;
+    }
+    body {
+        background-color: greenyellow;
+    }
+}
